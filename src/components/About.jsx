@@ -1,9 +1,8 @@
-import React from 'react'
 import aboutImg from '../assets/about.jpg'
 
 const About = () => {
   return (
-    <div className="text-white max-w-[1200px] mx-auto my-12" id="about">
+    <div className="text-gray-400 max-w-[1200px] mx-auto my-12 spacing" id="about">
 
         <div className="md:grid md:grid-cols-2 sm:py-16">
 
@@ -11,7 +10,7 @@ const About = () => {
                 <div className="my-auto mx-6">
                     <h2 className="text-4xl font-bold mb-4 primary-color">About Me</h2>
                     <p className="text-base lg:text-lg">
-                        I'm a highly motivated and detail-oriented individual with a passion for creating innovative solutions. With a strong
+                        I&apos;m a highly motivated and detail-oriented individual with a passion for creating innovative solutions. With a strong
                     </p> 
                 </div>
             </div>

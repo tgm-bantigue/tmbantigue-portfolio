@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import About from "./components/About";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
@@ -6,36 +6,41 @@ import Skills from "./components/Skills";
 import Work from "./components/Work";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import './index.css'; // Import your CSS file
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [scrolled, setScrolled] = useState(false);
+  const [loaded, setLoaded] = useState(false); // State for load animation
 
-  // Load theme from local storage
-  useEffect(() => {
-    const storedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(storedTheme);
-    document.body.className = storedTheme; // Set initial theme
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme); // Save theme to local storage
-    document.body.className = newTheme; // Update body class
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+    setScrolled(scrollTop > 100);
   };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    // Simulate loading effect
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 100); // Delay before triggering the fade-in
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <div>
-      <Navbar />
-      <button onClick={toggleTheme} className="theme-toggle">
-        Switch to {theme === 'light' ? 'dark' : 'light'} mode
-      </button>
-      <Hero />
-      <Skills />
-      <About />
-      <Work />
-      <Contact />
-      <Footer />
+      <Navbar scrolled={scrolled} />
+      <div className={`fade-in ${loaded ? 'fade-in-active' : ''}`}>
+        <Hero />
+        <Skills />
+        <About />
+        <Work />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 }

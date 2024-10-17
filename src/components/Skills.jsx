@@ -1,4 +1,3 @@
-import React from 'react'
 import java from '../assets/java.png'
 import csharp from '../assets/csharp.png'
 import vb from '../assets/vb.PNG'
@@ -23,13 +22,11 @@ import kubernetes from '../assets/kubernetes.png'
 const Skills = () => {
   return (
     <div>
-      {/* First set of My Tech Stack */}
-
-      <h2 className="text-gray-700 text-2xl md:text-4xl font-bold m-4 text-center md:w-full">
-      My <br/> Tech <br/> Stacks    
-      </h2> 
-
-      <div className='bg-black text-gray-400 md:h-[150px] max-w-[1200px] mx-auto grid grid-cols-6 
+      <h2 className="text-3xl font-bold mb-4 text-left md:w-full ml-64 md:ml-96 primary-color spacing"> 
+        My Tech Stacks:
+      </h2>
+    
+      <div className='text-gray-400 md:h-[150px] max-w-[1200px] mx-auto grid grid-cols-6 
                   place-items-center md:flex md:justify-between md:items-center'>
        
        <div className="flex flex-col items-center m-4 sm:my-0 w-[40px] md:w-[100px]">
@@ -84,7 +81,7 @@ const Skills = () => {
       
       </div>
 
-      <div className='bg-black text-gray-400 md:h-[150px] max-w-[1200px] mx-auto grid grid-cols-6 
+      <div className='text-gray-400 md:h-[150px] max-w-[1200px] mx-auto grid grid-cols-6 
                   place-items-center md:flex md:justify-between md:items-center mt-8'>
                     
       <div className="flex flex-col items-center m-4 sm:my-0 w-[40px] md:w-[100px]">
