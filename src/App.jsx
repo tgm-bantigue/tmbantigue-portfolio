@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Skills from "./components/Skills";
 import Work from "./components/Work";
+import Certifications from './components/Certifications';
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import './index.css'; // Import your CSS file
@@ -38,6 +39,7 @@ function App() {
         <Skills />
         <About />
         <Work />
+        <Certifications />
         <Contact />
         <Footer />
       </div>

@@ -31,26 +31,39 @@ const Navbar = () => {
                 <h1 className='text-3xl font-bold primary-color ml-4'>TGM-BANTIGUE</h1>
             </a>  
             <ul className='hidden md:flex'>
-                <li className='p-5'>
-                    <Link to='about' smooth={true} duration={500} className='hover:text-gray-300 hover:underline'>
-                        About
-                    </Link>
-                </li>
-                <li className='p-5'>
-                    <Link to='work' smooth={true} duration={500} className='hover:text-gray-300 hover:underline'>
-                        Work
-                    </Link>
-                </li>
-                <li className='p-5'>
-                    <Link to='contact' smooth={true} duration={500} className='hover:text-gray-300 hover:underline'>
-                        Contact
-                    </Link>
-                </li>
-            </ul>
+    <li className='p-5 hover:bg-blue-500 rounded-lg transition-colors duration-300'>
+        <Link to='about' smooth={true} duration={500} className='hover:text-gray-300 hover:underline'>
+            About
+        </Link>
+    </li>
+    <li className='p-5 hover:bg-blue-500 rounded-lg transition-colors duration-300'>
+        <Link to='work' smooth={true} duration={500} className='hover:text-gray-300 hover:underline'>
+            Work
+        </Link>
+    </li>
+    <li className='p-5 hover:bg-blue-500 rounded-lg transition-colors duration-300'>
+        <Link to='contact' smooth={true} duration={500} className='hover:text-gray-300 hover:underline'>
+            Contact
+        </Link>
+    </li>
 
-            <button onClick={toggleTheme} className='hidden md:block text-sm bg-gray-300 px-3 py-2 rounded ml-4'>
-                Switch to {theme === 'light' ? 'dark' : 'light'} mode
-            </button>
+    <li className='p-5 hover:bg-blue-500 rounded-lg transition-colors duration-300'>
+        <Link to='certifications' smooth={true} duration={500} className='hover:text-gray-300 hover:underline'>
+            Certifications and Trainings
+        </Link>
+    </li>
+</ul>
+
+<button
+  onClick={toggleTheme}
+  className={`hidden md:block text-sm rounded-xl border px-3 py-2 ml-4 ${
+    theme === 'light'
+      ? 'border-gray-400 bg-white text-black'
+      : 'border-gray-700 bg-gray-800 text-white'
+  } hover:bg-gradient-to-br from-blue-500 to-pink-500`}
+>
+  Switch to {theme === 'light' ? 'dark' : 'light'} mode
+</button>
 
             <div onClick={handleNav} className='block md:hidden mr-6'>
                 {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
@@ -72,6 +85,11 @@ const Navbar = () => {
                     <li className='p-2'>
                         <Link to='contact' smooth={true} duration={500} onClick={handleNav}>
                             Contact
+                        </Link>
+                    </li>
+                    <li className='p-2'>
+                        <Link to='certifications' smooth={true} duration={500} onClick={handleNav}>
+                            Certifications and Trainings
                         </Link>
                     </li>
                 </ul>
