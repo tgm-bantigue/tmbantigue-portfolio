@@ -32,7 +32,6 @@ function App() {
   }, []);
 
   return (
-    
     <div>
       <Navbar scrolled={scrolled} />
       <div className={`fade-in ${loaded ? 'fade-in-active' : ''}`}>
