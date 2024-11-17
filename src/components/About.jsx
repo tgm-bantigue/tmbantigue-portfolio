@@ -8,7 +8,7 @@ const About = () => {
         <div className="mt-4 md:mt-0 text-left flex">
           <div className="my-auto mx-6">
             <div className="pb-8">
-              <p className="text-4xl mb-3 font-bold primary-color">About Me</p>
+              <p className="text-4xl mb-3 font-bold text-gray-400">About Me</p>
               <p className="text-base lg:text-lg">
                 I&#39;m a highly motivated and detail-oriented individual with a passion for creating innovative solutions that address real-world challenges. With a strong foundation in technology and problem-solving, I thrive in fast-paced environments where I can apply my skills to develop efficient, user-centered applications. I&#39;m driven by a continuous desire to learn and improve, which helps me stay updated with industry trends and best practices. My commitment to delivering high-quality work and collaborating effectively with teams makes me a valuable asset in achieving project goals.
               </p>
