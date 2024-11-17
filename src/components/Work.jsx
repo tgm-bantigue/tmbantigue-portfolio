@@ -1,15 +1,15 @@
 import btrmerge from '../assets/btrmerge.jpg';
 import ticketreservation from '../assets/ticketreservation.png';
-import resto from '../assets/resto.png';
+import votingsys from '../assets/votingsys.png';
 import qr from '../assets/qr.png';
 import librarymgmt from '../assets/librarymgmt.png';
-import ibps from '../assets/ibps.png';
+import multip from '../assets/multip.png';
 
 const Work = () => {
   return (
     <div className='max-w-[1200px] mx-auto p-5 spacing' id='work'>
         <div className='pb-8'>
-            <p className='text-4xl mb-3 font-bold primary-color'>Work</p>
+            <p className='text-4xl mb-3 font-bold text-gray-400'>Work</p>
             <p className='text-gray-400'>Check out some of my recent work</p>
         </div>   
 
@@ -39,7 +39,7 @@ const Work = () => {
                 <img src={ticketreservation} alt="Project 2" className="object-cover w-full h-full"/>
                 <div className='opacity-0 group-hover:opacity-90 bg-[gray]/70 absolute inset-0 flex flex-col 
                                 justify-center items-center'>        
-                    <span className='text-2xl font-bold text-white tracking-wider'>Cinema Ticket Reservation System</span>
+                    <span className='text-1xl font-bold text-white tracking-wider'>Cinema Ticket Reservation System</span>
                     <div className='pt-8 text-center'>
                         <a href="/">
                             <button className='text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 
@@ -54,7 +54,7 @@ const Work = () => {
             <div className='transform transition-transform duration-300 hover:scale-105 overflow-hidden
                             shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center
                             h-[200px] bg-cover relative'>
-                <img src={resto} alt="Project 3" className="object-cover w-full h-full"/>
+                <img src={votingsys} alt="Project 3" className="object-cover w-full h-full"/>
                 <div className='opacity-0 group-hover:opacity-90 bg-[gray]/70 absolute inset-0 flex flex-col 
                                 justify-center items-center'>        
                     <span className='text-2xl font-bold text-white tracking-wider'>Restaurant Management System</span>
@@ -75,7 +75,7 @@ const Work = () => {
                 <img src={qr} alt="Project 2" className="object-cover w-full h-full"/>
                 <div className='opacity-0 group-hover:opacity-90 bg-[gray]/70 absolute inset-0 flex flex-col 
                                 justify-center items-center'>        
-                    <span className='text-2xl font-bold text-white tracking-wider'>QR-Based Academic Activities and
+                    <span className='text-1xl font-bold text-white tracking-wider'>QR-Based Academic Activities and
                     Events Registration System</span>
                     <div className='pt-8 text-center'>
                         <a href="/">
@@ -109,10 +109,10 @@ const Work = () => {
             <div className='transform transition-transform duration-300 hover:scale-105 overflow-hidden
                             shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center
                             h-[200px] bg-cover relative'>
-                <img src={ibps} alt="Project 2" className="object-cover w-full h-full"/>
+                <img src={multip} alt="Project 2" className="object-cover w-full h-full"/>
                 <div className='opacity-0 group-hover:opacity-90 bg-[gray]/70 absolute inset-0 flex flex-col 
                                 justify-center items-center'>        
-                    <span className='text-2xl font-bold text-white tracking-wider'>Intelligent Business Processing Suite</span>
+                    <span className='text-2xl font-bold text-white tracking-wider'>Multiplication Table</span>
                     <div className='pt-8 text-center'>
                         <a href="/">
                             <button className='text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 

@@ -1,16 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
+
+  const [theme, setTheme] = useState('light');
+
+  // Detect the theme (light or dark) on component mount
+  useEffect(() => {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    setTheme(currentTheme);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -30,11 +38,14 @@ const Contact = () => {
   return (
     <div className="max-w-[1200px] mx-auto sm:py-20 p-5" id="contact">
       <div className="text-center">
-        <h2 className="text-4xl font-bold leading-tight primary-color">Contact Me</h2>
+        <h2 className="text-4xl font-bold leading-tight text-gray-400">
+          Contact Me
+          </h2>
       </div>
 
+
       <div className="max-w-[800px] mx-auto">
-        <div className="mt-6 bg-[#161616] rounded-xl">
+        <div className={`mt-6 rounded-xl border ${theme === 'light' ? 'bg-white border-gray-300' : 'bg-[#333333] border-gray-700'}`}>
           <div className="p-10">
             <form onSubmit={handleSubmit} action="https://getform.io/f/bzylepna" method="POST">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
@@ -46,8 +57,12 @@ const Contact = () => {
                       id="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Your name"
-                      className="bg-[#535252] w-full px-4 py-4 text-gray-400 placeholder-gray-400 border border-gray-700 rounded-md focus:outline-none focus:border-white"
+                      placeholder="Your Name"
+                      className={`w-full px-4 py-4 ${
+                        theme === 'light'
+                          ? 'bg-gray-100 text-gray-800 border-gray-300'
+                          : 'bg-[#535252] text-gray-400 border-gray-700'
+                      } rounded-md focus:outline-none focus:border-blue-500`}
                     />
                   </div>
                 </div>
@@ -61,7 +76,11 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="Your Email"
-                      className="bg-[#535252] w-full px-4 py-4 text-gray-400 placeholder-gray-400 border border-gray-700 rounded-md focus:outline-none focus:border-white"
+                      className={`w-full px-4 py-4 ${
+                        theme === 'light'
+                          ? 'bg-gray-100 text-gray-800 border-gray-300'
+                          : 'bg-[#535252] text-gray-400 border-gray-700'
+                      } rounded-md focus:outline-none focus:border-blue-500`}
                     />
                   </div>
                 </div>
@@ -74,7 +93,11 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Your Message"
-                      className="bg-[#535252] w-full px-4 py-4 text-gray-400 placeholder-gray-400 border border-gray-700 rounded-md focus:outline-none focus:border-white"
+                      className={`w-full px-4 py-4 ${
+                        theme === 'light'
+                          ? 'bg-gray-100 text-gray-800 border-gray-300'
+                          : 'bg-[#535252] text-gray-400 border-gray-700'
+                      } rounded-md focus:outline-none focus:border-blue-500`}
                       rows="4"
                     />
                   </div>
@@ -83,7 +106,7 @@ const Contact = () => {
                 <div className="sm:col-span-2">
                   <button
                     type="submit"
-                    className="text-xl w-full p-4 mt-2 font-semibold text-white bg-primary-color rounded-md"
+                    className="px-6 py-3 w-full rounded-xl border border-gray-400 hover:bg-gradient-to-br from-blue-500 to-pink-500 text-white"
                   >
                     Send
                   </button>

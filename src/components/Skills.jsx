@@ -22,8 +22,8 @@ import kubernetes from '../assets/kubernetes.png'
 const Skills = () => {
   return (
     <div>
-      <h2 className="text-3xl font-bold mb-4 text-left md:w-full ml-64 md:ml-96 primary-color spacing"> 
-        My Tech Stacks:
+      <h2 className="text-4xl font-bold mb-4 text-left md:w-full ml-64 md:ml-96 text-gray-400 spacing"> 
+        My Tech Stacks
       </h2>
     
       <div className='text-gray-400 md:h-[150px] max-w-[1200px] mx-auto grid grid-cols-6 

@@ -41,16 +41,16 @@ const Navbar = () => {
         </Link>
     </li>
     <li className='p-5 hover:bg-blue-500 rounded-lg transition-colors duration-300'>
-        <Link to='contact' smooth={true} duration={500} className='hover:text-gray-300 hover:underline'>
-            Contact
-        </Link>
-    </li>
-
-    <li className='p-5 hover:bg-blue-500 rounded-lg transition-colors duration-300'>
         <Link to='certifications' smooth={true} duration={500} className='hover:text-gray-300 hover:underline'>
             Certifications and Trainings
         </Link>
     </li>
+    <li className='p-5 hover:bg-blue-500 rounded-lg transition-colors duration-300'>
+        <Link to='contact' smooth={true} duration={500} className='hover:text-gray-300 hover:underline'>
+            Contact
+        </Link>
+    </li>
+    
 </ul>
 
 <button
@@ -82,13 +82,13 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li className='p-2'>
-                        <Link to='contact' smooth={true} duration={500} onClick={handleNav}>
-                            Contact
+                        <Link to='certifications' smooth={true} duration={500} onClick={handleNav}>
+                            Certifications and Trainings
                         </Link>
                     </li>
                     <li className='p-2'>
-                        <Link to='certifications' smooth={true} duration={500} onClick={handleNav}>
-                            Certifications and Trainings
+                        <Link to='contact' smooth={true} duration={500} onClick={handleNav}>
+                            Contact
                         </Link>
                     </li>
                 </ul>

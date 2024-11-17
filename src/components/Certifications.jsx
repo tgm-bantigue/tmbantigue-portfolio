@@ -9,7 +9,7 @@ const Certifications = () => {
   return (
     <div className='max-w-[1200px] mx-auto p-5 spacing' id='certifications'>
         <div className='pb-8'>
-            <p className='text-4xl mb-3 font-bold primary-color'>Certifications and Trainings</p>
+            <p className='text-4xl mb-3 font-bold text-gray-400'>Certifications and Trainings</p>
             <p className='text-gray-400'>Check out some of my recent certifications and training sessions.</p>
         </div>   
 
