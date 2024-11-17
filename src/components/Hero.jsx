@@ -11,7 +11,7 @@ const Hero = () => {
 </div>
         <div className='col-span-2 px-5 my-auto'>
             <h1 className='text-gray-400 text-4xl sm:text-5xl lg-:text-8xl font-extrabold'>
-                <span className="primary-color">
+                <span className="text-gray-400">
                     I&apos;m a 
                 </span>
                 <br/>

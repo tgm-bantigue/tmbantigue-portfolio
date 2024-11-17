@@ -27,7 +27,7 @@ const Navbar = () => {
     return (
         <div className='text-gray-400 h-[100px] max-w-[1200px] mx-auto flex justify-between items-center'>
             <a href="/">
-                <h1 className='text-3xl font-bold primary-color ml-4'>TGM-BANTIGUE</h1>
+                <h1 className='text-3xl font-bold text-gray-400 ml-4'>TGM-BANTIGUE</h1>
             </a>  
             <ul className='hidden md:flex'>
     <li className='p-5 hover:bg-blue-500 rounded-lg transition-colors duration-300'>
