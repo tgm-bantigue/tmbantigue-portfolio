@@ -62,7 +62,7 @@ jobs:
           AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY}}
           AWS_ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPOSITORY }}
           KUBE_NAME: ${{ secrets.KUBE_NAME }}
-          GLENN_PORTFOLIO_HOST: ${{ env.EXAKT_CHAT_SERVICE_HOST }}
+          GLENN_PORTFOLIO_HOST: ${{ env.GLENN_PORTFOLIO_HOST }}
 
         run: |
           cd eks
