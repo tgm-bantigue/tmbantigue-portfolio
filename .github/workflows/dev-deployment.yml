@@ -1,0 +1,94 @@
+name: DEV Environment Deployment
+
+on:
+  push:
+    branches:
+      - dev
+      - development
+
+env:
+  #AWS Credentials
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+
+  # Application Info
+  APPLICATION_NAME: glenn-portfolio
+  APPLICATION_DEPLOYMENT_NAME: glenn-portfolio-deployment
+  APPLICATION_NAMESPACE: glenn-portfolio-dev
+  APPLICATION_VERSION: 1.0.0-dev
+  APPLICATION_PROFILE: "dev"
+  GLENN_PORTFOLIO_HOST: "https://portfolio.tmbantigue.site/"
+
+jobs:
+  build-and-push-docker-image:
+    name: Push Docker image to AWS ECR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: "v1.29.1"
+        id: install
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_KEY }}
+          aws-region: ap-southeast-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, Tag, and Push the Image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: exakt
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+          docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
+
+      - name: Update ENV File
+        env:
+          #########################################
+          ##  ENVIRONMENT VARIABLES FOR SECRETS  ##
+          #########################################
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY}}
+          AWS_ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPOSITORY }}
+          KUBE_NAME: ${{ secrets.KUBE_NAME }}
+          GLENN_PORTFOLIO_HOST: ${{ env.EXAKT_CHAT_SERVICE_HOST }}
+
+        run: |
+          cd eks
+          chmod +x apply-env.sh
+          sh apply-env.sh
+
+      - name: Update kube config
+        run: aws eks update-kubeconfig --name ${{ secrets.KUBE_NAME }} --region ap-southeast-1
+
+      - name: Create Container Registry Secret
+        run: |
+          kubectl delete secret glenn-portfolio-secret -n $APPLICATION_NAMESPACE --ignore-not-found
+          kubectl create secret generic glenn-portfolio-secret --from-env-file=eks/overlays/dev/configs/.env -n $APPLICATION_NAMESPACE
+
+      - name: Deploy image to AWS EKS
+        run: |
+          kubectl apply -k eks/overlays/dev -n $APPLICATION_NAMESPACE
+          kubectl apply -f eks/ingress.yml -n $APPLICATION_NAMESPACE
+
+      - name: Restart deployment
+        run: |
+          kubectl rollout restart deployment $APPLICATION_DEPLOYMENT_NAME -n $APPLICATION_NAMESPACE
+
+      - name: Log Deployment
+        run: |
+          kubectl get all -o wide -n $APPLICATION_NAMESPACE
+          kubectl get ingress -n $APPLICATION_NAMESPACE
+          kubectl get cm -n $APPLICATION_NAMESPACE
+          kubectl get secret -n $APPLICATION_NAMESPACE

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: glenn-portfolio-deployment
+  labels:
+    app: glenn-portfolio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: glenn-portfolio
+  template:
+    metadata:
+      labels:
+        app: glenn-portfolio
+    spec:
+      containers:
+        - name: repo
+          image: 471112954955.dkr.ecr.us-east-1.amazonaws.com/repo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - name: app-config
+              subPath: .env
+              mountPath: /app/.env
+              readOnly: true
+          envFrom:
+            - secretRef:
+                name: glenn-portfolio-secret
+      volumes:
+        - name: app-config
+          secret:
+            secretName: glenn-portfolio-secret

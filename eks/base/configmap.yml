@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: glenn-portfolio-config
+  labels:
+    app: glenn-portfolio
+data:
+  .env: |

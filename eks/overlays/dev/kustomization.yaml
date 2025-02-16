@@ -1,0 +1,8 @@
+bases:
+  - ../../base
+
+configMapGenerator:
+  - name: glenn-portfolio-config
+    behavior: replace
+    files:
+      - configs/.env
